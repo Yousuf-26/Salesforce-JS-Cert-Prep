@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super and subclasses</title>
+</head>
+<body>
+    <script>
+        //PARENT CLASS
+        var Mobile = function(model){
+            this.model=model;
+        }
+
+
+        //PROTOTYPE METHOD
+        Mobile.prototype.getModel = function(){
+            return this.model;
+        }
+
+        //SUB CLASS 
+        var Samsung = function(model,price){
+            this.model = model;
+            this.price = price;
+        }
+        // SAMSUNG WOULD NOW INHEHERIT THE MOBILE PROTOTYPE
+        Samsung.prototype = Object.create(Mobile.prototype);
+        Samsung.prototype.constructor=Samsung;
+        //SUB CLASS
+        var Lenovo = function(model){
+            this.model = model;
+        }
+        //LENOVO WOULD NOW INHEHERIT THE MOBILE PROTOTYPE
+        Lenovo.prototype = Object.create(Mobile.prototype);
+        Lenovo.prototype.constructor = Lenovo;
+        //SUB CLASS
+        var Sony = function(model,price){
+            //helps to inherit member instance of parent class
+            //just like super()
+            Mobile.call(this,model)
+
+        }
+        //SONY WILL INHEHERIT THE MOBILE PROTOTYPE
+        Sony.prototype = Object.create(Mobile.prototype);
+        Sony.prototype.constructor= Sony;
+        //TESTING
+        var thinkPAD = new Lenovo('ThinkPAD 2024');
+        console.log('Lenovo sub-class: ',thinkPAD.getModel())
+        var samsungGalaxy = new Samsung('Samsung Galaxy');
+        console.log('Samsung sub-class: ',samsungGalaxy.getModel())
+        var Experia = new Sony('Experia One',3000)
+        console.log(Experia.getModel());
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheretance prototype</title>
+</head>
+<body>
+
+    <script>
+
+        function Mobile(){
+            this.a=10;
+            this.c=30;
+        }
+        Mobile.prototype.d=500;
+
+        var m = new Mobile();
+        console.log('Mobile object: ',m)
+        function Samsung(){
+            //Inheritance but cannot access prototype members
+            //only works for instance members 
+            Mobile.call(this)
+            this.b=20;
+        }
+
+        //this code below would make the prototype members
+        // available to the child;
+        Samsung.prototype = Object.create(Mobile.prototype)
+        Samsung.prototype.constructor= Samsung;
+        var s = new Samsung();
+        console.log('Samsung object: ',s.d)
+    </script>
+    
+</body>
+</html> 

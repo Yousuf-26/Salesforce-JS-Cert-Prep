@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script</title>
+</head>
+<body>
+
+    <script>
+
+        var fees = new Object();
+        fees.amount = 300;
+        fees.subject='CS Course';
+        fees.output = function(){ return `subject: ${fees.subject} & amount: ${fees.amount}`}
+        fees.subject='Finance Course';
+
+        function sumaya(){
+            return {
+                name:'Sumaya Yeacin',
+                age:28,
+                Profession:'QA Engineer'
+            }
+        }
+        var sumayaRimu = sumaya();
+        //document.write(sumayaRimu.name);
+
+        //LESSON - OBJECT USING FACTORY FUNCTION
+        function mobile(mobile_name,mobile_price){
+
+            return {
+                    name:mobile_name,
+                    price:mobile_price
+            }
+        }
+
+            var samsung = mobile("Samsung",3000)
+            var  LG = mobile("LG",2500)
+            //document.write(JSON.stringify(samsung)+"<br>");
+            //document.write(JSON.stringify(LG)); 
+
+            //LESSON - OBJECT USING CONSTRUCTOR
+            function cellphone(name,price){
+
+                this.model=name;
+                this.price=price;
+
+            }
+
+
+
+            var sony = new cellphone("SONY",3000);
+            var iphone = new cellphone("IPHONE",40000);
+
+            //LESSON -  WAY TO CHECK IF THE PROPERTY EXIST
+            var checkforName = 'model' in sony ? 'Model Exists': 'Model Does not exist';
+            //LESSON- WAY TO CHECK IF THE PROPERTY EXIST
+            var checkforPrice = sony.hasOwnProperty('price') ? "Price exists" : "Price does not exist";
+            // for in loop - helps to loop through 
+            for(var properties in sony){
+
+                document.write(properties+"<br>")
+            }
+
+            //LESSON - Object.keys()
+            //DOES NOT SUPPORT PROTOTYPE PROPERTIES
+            document.write("------------LESSON - Object.keys()------------- <br>")
+            document.write(Object.keys(sony)+"<br>")
+            document.write("------------Lesson - Object.keys------------- <br>")
+            document.write("<br><br><br>")
+
+            document.write(JSON.stringify(sony)+"<br>")
+            document.write(JSON.stringify(iphone)+"<br>")
+            document.write(checkforName+'<br>')
+            document.write(checkforPrice)
+
+
+            //LESSON - Prototype
+            document.write("<br><br><br>")
+            document.write("<br><br><br>")
+            document.write("------------LESSON - Prototype------------- <br>")
+
+            function Car(model,price){
+                //instance member
+                this.model=model;
+                this.price=price;
+
+            }
+
+            var camry = new Car('Camry',2400);
+            var audi  = new Car('Audi',25000);
+            audi.year=2007;
+            document.write(JSON.stringify(camry) +"<br>")
+            document.write(JSON.stringify(audi)+"<br>")
+            //prototype member
+            Car.prototype.year=null;
+            document.write("After prototype<br>")
+            document.write(JSON.stringify(camry) +"<br>")
+            //prints only instance member
+            document.write("-------prints only instance member----------<br>")
+            document.write(Object.keys(camry) +"<br>")
+            //prints only instance+prototype member
+            document.write("-----------prints only instance+prototype member-------<br><br><br>")
+            for(var member in camry){
+                document.write(member +"<br>")
+            }
+            
+            document.write(JSON.stringify(audi)+"<br>")
+            //console.log(camry)
+            //console.log(audi)
+            document.write("<br><br><br><br><br><br><br><br>")
+            document.write("------LESSON ------Object.prototype-------<br><br>");
+            //console.log(Object.prototype)
+            //.log('Prototype of B')
+            var b = {};
+
+            //console.log(Object.getPrototypeOf(b))
+
+            //console.log('Prototype of c')
+            var c = new Object();
+           // console.log(Object.getPrototypeOf(String.prototype))
+
+
+            function Student(){
+                this.a =10
+
+            }
+            Student.prototype.a =20;
+            var sumaya = new Student();
+            //console.log(sumaya.a)
+
+            document.write("------LESSON ------Prototype Inheritance-------");
+
+            function computer(){
+                this.a=10
+            }
+
+            var laptop = new computer();
+            console.log("Laptop value: ",laptop.a)
+            
+
+    </script>
+    
+</body>
+</html>
