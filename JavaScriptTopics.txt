@@ -1,3 +1,10 @@
+JS concepts for review
+
+1. Object.assign()
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+const sourceOne = { b:5,d: 4, e: 5 };
+
 //SALESFORCE JS - I
 https://github.com/Yousuf-26/Salesforce-JS-Cert-Prep.git
 
@@ -56,3 +63,4 @@ console.log(Object.getPrototypeOf(b))
 6.Prototype Inheritance
 
 7..call(), .apply() and .bind()
+
