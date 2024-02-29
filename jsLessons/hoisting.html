@@ -47,7 +47,7 @@
         
 
         //HOISTING IN FUNCTIONS - MORE COMPLEX EXAMPLES IN VAR
-        console.log('----HOISTING IN FUNCTIONS--var---')
+        console.log('----HOISTING IN FUNCTION--var---')
         var LANGUAGE ="Java";
         var language = "JavaScript";
 
@@ -67,7 +67,7 @@
         console.log('Hoisting function ', getLanguage())
 
         //HOISTING IN FUNCTIONS - MORE COMPLEX EXAMPLES IN let
-        console.log('----HOISTING IN FUNCTIONS---let--')
+        console.log('----HOISTING IN FUNCTION---let--')
         let CAR ="BMW";
         let car = "Toyota";
 
@@ -88,6 +88,31 @@
             return car;
         }
         console.log('Hoisting function ', getCar())
+
+        //FUNCTION HOISTING 
+        /*
+        All functions are moved at the top of the scope 
+        */
+        console.log('----HOISTING IN FUNCTIONS---')
+
+        myFunc();
+        function myFunc(){
+            console.log('I love JavaScript')
+        }
+
+        console.log('----HOISTING IN FUNCTIONS--let-')
+        myFuncTwo();
+        function myFuncTwo(){
+            let laguage = 'I love to talk in my native language Bangla'
+            console.log(laguage)
+        }
+        myFuncThree();
+        const myFuncThree = function(){
+
+            let laguage = 'I love to talk in my native language Bangla'
+            console.log(laguage)
+        }
+
 
     </script>
 </body>
