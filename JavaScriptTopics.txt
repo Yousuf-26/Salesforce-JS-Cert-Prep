@@ -64,3 +64,4 @@ console.log(Object.getPrototypeOf(b))
 
 7..call(), .apply() and .bind()
 
+8. JavaScript Hoisting
