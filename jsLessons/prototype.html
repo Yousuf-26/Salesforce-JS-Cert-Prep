@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    <script>
+        /*
+            Notes & observation
+            1.Objects cannot be hoisted, might cause reference error even for let and var
+        */
+        //the code below causes reference error since the function was invoked 
+        //before initialization
+        //person.eat();
+        console.log("-------Object-------");
+        console.log("1. Object Literal");
+        let person ={};
+        person.name = "Yousuf Borno";
+        person.age =29
+        person.eat = function(){
+            console.log('Person is eating')
+        }
+
+        //no reference error
+        person.eat();
+
+        function Human(name,profession){
+
+            let human ={}
+            human.name=name;
+            human.profession=profession;
+            
+            return human;
+
+        }
+
+        Human.prototype.eat = function(){
+                console.log(human.name+' is eating healthy food while working as a '+human.profession );
+
+            }
+
+        const yousuf = Human('Youusf Borno','Salesforce Developer');
+        const Sam = Human('Sam','Cloud Engineer');
+        console.dir(yousuf)
+        console.dir(Sam)
+
+        /*
+        Notes and observation
+         * Object.create() actually helps to inherit the proerties from whichever object
+         we pass as an input from the perspective of OOP concept we can interpret it as an inheritance
+         * inherits all properties from object literal
+        */
+        console.log("2. Object.create() ");
+        //MORE COMPLEX EXAMPLES
+        const captain= {
+            name:'Ricky',
+            age:36,
+            country:'Bangladesh'
+        }
+        console.log(captain)
+        const player =Object.create(captain);
+        console.log(player)
+        
+       
+        function newFunc(){}
+        console.dir(newFunc)
+
+
+    
+        
+    </script>
+</body>
+</html>
