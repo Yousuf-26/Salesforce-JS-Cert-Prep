@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New and This</title>
+</head>
+<body>
+    <script>
+        /*
+        Notes & Observation
+        */
+        console.log("--------New&this--------")
+        /*
+        Without new keyword to the object you have to do more steps
+        1.USE THE --- Object.create(name of the object you want to prototype)
+        */
+        function Person(name,age){
+            let person = Object.create(Person.prototype);
+            person.name = name;
+            person.age=age;
+            return person;
+        }
+
+        Person.prototype = {
+            eat(){
+                console.log('I am eating');
+            },
+            sleep(){
+                console.log('I am sleeping');
+            },
+            play(){
+                console.log('I am playing')
+            }
+        }
+
+        const sakib = Person('Sakib Al Hasan',28);
+        const sam   = Person('Samuel Vena',30);
+        console.log(sakib)
+        console.log(sam)
+        sam.play()
+        //Conclusion
+        //1. what we can infer from this above examples are that there is presence of
+        // new keyword
+        //with new Keyword
+
+        function PersonwithNew(name,age){
+            /*
+            If we use new the lines below would be changed and would be interpreted as
+            this instead of person and would automatically add the line this
+            */
+            //let this = Object.create(PersonwithNew.prototype)
+            this.name = name;
+            this.age=age;
+            //return this;
+        }
+        PersonwithNew.prototype.introduce = function(){
+
+        console.log(this.name+' is my name  and '+this.age);
+        }
+        
+        const sakibNew = new PersonwithNew('Sakib new',22);
+        const samNew = new PersonwithNew('sam new',25);
+        samNew.introduce();
+    
+
+</script>
+</body>
+</html>
