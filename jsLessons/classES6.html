@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Class,static Method,getters&setters and Polymorphism</title>
+</head>
+<body>
+    <script>
+
+        console.log('--------Class Inheritance----------');
+        //PARENT CLASS
+        class Person{
+            constructor(name,age){
+                this.name= name; //property
+                this.age = age;  //property
+            }
+
+            eat(){ //method
+                console.log(this.name+" is eating")
+            }
+
+            //setter
+            set setName(name){
+                this.name=name;
+                
+            }
+            //getter
+            get getName(){
+                return this.name;
+            }
+
+            //static method
+            static hello(){
+                console.log('Hello I am static method')
+            }
+            play(){
+
+                console.log('I am from parent class')
+            }
+            
+        }
+
+
+        //SUB CLASS
+        class Cricketer extends Person{
+            constructor(name,age,type,country){
+                //Person.call(this,name,age) == super(name,age)
+                super(name,age)
+                this.name= name;
+                this.age = age;
+                this.type=type;
+                this.country;
+            }
+
+            play(){
+                //HOW WE CALL PARENT CLASS METHOD
+                super.play();
+                //THIS IS FROM THE CHILD IMPLEMENTATION
+                console.log(this.name +' is playing from child class')
+            }
+        }
+
+        let sakib = new Cricketer("Sakib",34,"All rounder",'Bangladesh');
+        console.log(sakib);
+
+        // GETTERS AND SETTERS
+        console.log('-------Getters and Setters-------')
+        //WE ACCESS IT JUST LIKE WE ACCESS A PROPERTY OF ANY OBJECT
+        console.log(sakib.getName)
+        //WE CAN SET THE PROPERTY NEW VALUE JUST LIKE WE SET VARIABLES IN OBJECT
+        console.log(sakib.setName='Javed')
+        console.log(sakib.getName)
+        //STATIC METHOD
+        Person.hello()
+        //CALLING SUPER METHOD 
+        sakib.play()
+    </script>
+</body>
+</html>

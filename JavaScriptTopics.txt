@@ -9,3 +9,7 @@ JS concepts for review
 7. .call(), .apply() and .bind()
 8. JavaScript Hoisting
 9. Prototype
+10. Class ES6
+11. getters and setters
+12. static method
+13. Polymorphism
