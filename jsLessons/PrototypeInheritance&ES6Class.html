@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Inheritance & ES6 Class</title>
+</head>
+<body>
+    <script>
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+            this.eat=function(){
+                console.log(name+' is eating')
+            }
+        }
+
+        function Cricketer(name,age,type,country){
+            //INHERITS INSTANCE MEMBER
+            Person.call(this,name,age)
+            this.type=type;
+            this.country=country;
+
+        }
+
+        //Cricketer is inherited to Person
+        Cricketer.prototype =Object.create(Person.prototype);
+        //HERE WE NEED TO OVERRIDE THE CONSTRUCTOR SINCE PERSON.CALL()
+        //IS NOT AVAILABLE WITH THE DEFAULT CONSTRUCTOR
+        // Cricketer.prototype.constructor = Cricketer has now updated 
+        //the constructor
+        Cricketer.prototype.constructor = Cricketer;
+
+        const sakib = new Person('Sakib',29)
+        const tamim = new Person('Tamim',30)
+        console.log(sakib)
+        console.log(tamim)
+
+        var ABdevillers = new Cricketer('AB devillers',25,'Batsman','South Africa');
+        console.log(ABdevillers)
+        console.log(ABdevillers.eat())
+        
+
+        /*
+            Notes and observations
+        __proto__
+        */
+        console.log('-----__proto__-----')
+
+        var f = function(){}
+        console.dir(f)
+
+        Object.prototype.yousuf = function(){
+
+            console.log('yousuf is inherited')
+        }
+
+        var newHuman = new f();
+        newHuman.yousuf()
+    </script>
+</body>
+</html>
