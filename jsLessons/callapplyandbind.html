@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.call(), .apply() and .bind()</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        implicit binding
+        explicit binding
+        new binding
+        window binding
+        */
+       console.log('-------implicit binding------')
+
+       var printPlayerName = function(name){
+        console.log(name);
+       }
+       printPlayerName('Javed Patterwary')
+
+       //IMPLICIT BINDING EXAMPLE
+       var rakib = {
+        name:'Rakib',
+        age:35,
+        printPlayerName:()=>{
+            console.log('Hello from the rakib object')
+        }
+       }
+
+       rakib.printPlayerName();
+
+       /*
+       conclusion
+       in order to understand which object is the method is referring to,
+       we need to understand the concept of implicit binding,
+       in case of printPlayerName() which is available as a standalone method 
+       as well as an object. In order to pinpoint the reference of that specific
+       method , we need to look at the left side of it
+       */
+      //More complex example
+       var Person = function(name,age){
+
+        return {
+            name:name,
+            age:age,
+            printName:function(){
+                console.log(this.name)
+            }
+        }
+       }
+
+       var kabib = Person('kabib',45);
+       kabib.printName()
+
+       console.log('-------explicit binding------')
+       /*
+       Helps to find ir attach and refer standalone functions in JS
+       to an object
+        */
+
+        printName= ()=>{
+            console.log('PrintName standalone function')
+        }
+    </script>
+</body>
+</html>
