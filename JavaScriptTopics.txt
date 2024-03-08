@@ -13,3 +13,4 @@ JS concepts for review
 11. getters and setters
 12. static method
 13. Polymorphism
+14. explicit,implicit,new and window binding

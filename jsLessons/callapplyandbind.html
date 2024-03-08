@@ -61,9 +61,50 @@
        to an object
         */
 
-        printName= ()=>{
-            console.log('PrintName standalone function')
+        var printName= function(){
+            console.log(this)//helps to find which object is it referring to
+            console.log(this.name);
+            console.log(`${this.name} is a ${v1}, ${v2} and ${v3}`)
         }
+
+        var jamal = {
+            name:"Jamal",
+            age:45
+        }
+
+        var v1 = 'batsman';
+        var v2 =  'cricker';
+        var v3 = 'businessman';
+        
+        // call() method actually allows the standalone metho to get some context of this
+        // this reference gets more clarify of what this keyword is referrring to 
+        //which object
+        // call(object,v1,v2,v3)
+        //apply(Object,array)
+        //function keyword functions needs explicit binding
+        //apply and call does the same thing
+        printName.call(jamal)
+
+        // bind() 
+        // it returns the function - but does not call the function immediately
+        var newfunc = printName.bind(jamal,v1,v2,v3)
+        newfunc()
+
+        console.log('------window binding----------')
+        /*
+         for standalone functions this keyword would always refer to 
+         window
+        */
+       var PrintName =function(){
+        console.log(this)//window object
+        console.log(this.name);//undefined
+       }
+
+       var jammy = {
+        name:'Jamy sam'
+       }
+
+       PrintName();
     </script>
 </body>
 </html>
