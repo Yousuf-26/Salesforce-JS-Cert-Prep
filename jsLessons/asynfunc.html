@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+<body>
+    <script>
+
+        /*
+        
+        1. async function always return a promise
+        2. await just behaves like a then()
+        
+        */
+        async function friendFunction(){
+            const meetingDetailsFromAsync = {
+                    name:'Stock Anaysis',
+                    time: '10:00 PM',
+                    location: 'Vermillion,South Dakota'
+                }
+            return Promise.resolve(meetingDetailsFromAsync);
+        }
+
+        
+        //console.log(friendFunction());
+
+        let meeting =true;
+        const meetingPromise = new Promise( (resolve,reject)=>{
+
+            if(meeting){
+                const meetingDetails = {
+                    name:'Stock Anaysis',
+                    time: '10:00 PM',
+                    location: 'Vermillion,South Dakota'
+                }
+                resolve(meetingDetails);
+            }
+            else{
+                reject(new Error("No meetings are scheduled"));
+            }
+        })
+
+        //Calling the promise
+        meetingPromise
+        .then((res)=>{
+            console.log(JSON.stringify(res))
+        })
+        .catch()
+
+        //calling async
+        async function myMeeting(){
+            const meetingDetails = await meetingPromise;
+            
+        }
+
+
+        async function myDisplay() {
+        let myPromise = new Promise(function(resolve, reject) {
+        resolve({name:'Yousuf Borno',job:'Salesforce Developer'});
+        });
+        console.log(await myPromise);
+        }
+
+myDisplay();
+        
+    </script>
+</body>
+</html>
