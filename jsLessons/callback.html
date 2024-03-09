@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+<body>
+    <script>
+
+        //The example below has disrupt the order of execution
+        const processOrder =(customer,callback) =>{
+            console.log('processing order for '+customer);
+
+            setTimeout(()=>{
+                console.log('Cooking completed')
+                callback(customer)
+            },3000)
+            
+        }
+
+        //console.log('take order for customer 1')
+        //processOrder('Hola');
+        //console.log('Completed order for customer 1')
+
+        const completeOrder = (customer) =>{
+
+            console.log('Completed order for '+customer);
+        }
+
+        //Fixing the order of execution using callback
+        const takeOrder = (customer,callback) =>{
+
+            console.log('take order for '+customer)
+            callback(customer)
+        }
+
+        takeOrder('Customer 1',(customer)=>{
+            processOrder(customer,(customer)=>{
+                completeOrder(customer)
+
+            })
+        })
+
+        // but callback has a problem which is called callback hell
+
+    </script>
+</body>
+</html>

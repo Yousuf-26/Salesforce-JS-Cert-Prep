@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    
+    <script>
+
+        /*
+        What is promise?
+        promise is basically a way to handle asynchronous js
+        without encountering callback hell,which means when you call a promise
+        it will either approve or disapprove your request
+        */
+        const hasmeeting=false;
+        const meeting = new Promise((resolve,reject)=>{
+           if(!hasmeeting){
+
+                const meetingDetails ={
+                    name:'Technical meeting',
+                    location:'Google Meet',
+                    time:'10:00PM'
+                };
+
+                resolve(meetingDetails);
+           }
+           else{
+            reject(new Error("meeting already scheduled !"))
+           } 
+
+        })
+
+        const addToCalendar = (meetingDetails) =>{
+
+            
+
+                const calendar = meetingDetails.name + " has been scheduled on"+
+                 meetingDetails.location+
+                 ' at '+meetingDetails.time
+                return Promise.resolve(calendar)
+        }
+
+        //calling the promise
+        meeting
+        .then(addToCalendar)
+        .then((res)=>{
+            //resolved data
+            console.log(JSON.stringify(res))
+        })
+        .catch((err)=>{
+            //rejected data
+            console.log(err.message)
+        }
+            
+        )
+    </script>
+</body>
+</html>

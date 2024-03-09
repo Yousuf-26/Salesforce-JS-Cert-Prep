@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous - JS</title>
+</head>
+<body>
+    <script>
+        console.log('----------Synchronous----------')
+        /*
+        What is single-threaded language?
+        */
+
+        //Example 1 with synchrous way of processing
+        const processOrder = (customer) =>{
+            console.log(`processing order for customer 1`);
+            var currentTime = new Date().getTime();
+            while( currentTime + 6000  >= new Date().getTime());
+
+            console.log('order processed for customer 1');
+        }
+
+        console.log('take order for customer 1');
+        processOrder();
+        console.log('completed order for customer 1');
+
+        console.log('----------Asynchronous----------')
+        //Example 2 with asynchrous way of processing
+        const processOrderOne = (customer) =>{
+            console.log(`processing order for customer 1 with Async call`);
+            var currentTime = new Date().getTime();
+            //INSTEAD OF WHILE WE WILL USE SETTIMEOUT METHOD
+            //while( currentTime + 6000  >= new Date().getTime());
+            setTimeout(()=>{
+                console.log('I am invoking after 1s')
+            },1000)
+
+            console.log('order processed for customer 1');
+        }
+
+        console.log('take order for customer 1');
+        processOrderOne();
+        console.log('completed order for customer 1');
+
+        /*
+        Notes
+        Asynchronous code is represented by setTimeOut() -- which is provided by web api
+        Synchronous code is represented by while() -- which is a js code
+        Asynchronous code is always executed after, all the syncrhonous code is completed
+        Asynchronous code always moved from the call stack and send to the callback queue
+        */
+
+   
+
+
+    </script>
+    
+</body>
+</html>
