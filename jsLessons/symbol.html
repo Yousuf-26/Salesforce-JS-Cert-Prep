@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Symbol</title>
+</head>
+<body>
+
+    <script>
+        /*
+        What is symbol?
+        Symbol is a primitive data, used for login purpose
+        
+        */
+
+        //HOW TO CREATE SYMBOL
+        //Symbol(DESCRIPTION HERE)
+        console.log('-------symbol---------')
+        var symbol1 = Symbol('Symbol 1');
+        var symbol2 = Symbol('Symbol 2');
+        console.log(symbol1 ===symbol2);
+
+        console.log('symbol1',symbol1)
+        console.log('symbol2',symbol2)
+
+        //IF WE WANT TO SET VALUES FOR THE SYMBOL
+        var name1 = Symbol.for("name1")
+        var name2 = Symbol.for("name1")
+        console.log(name1 === name2)
+
+        //HOW TO USE SYMBOL IN DAILY WORK IN OBJECTS
+        var cricket =Symbol.for('This is Cricket symbol');
+        var object = {
+            name:'Sakib',
+            [cricket]: "Bangladesh"
+        }
+        console.log(object)
+
+        //Symbols cannot be seen in object iterator
+
+    </script>
+    
+</body>
+</html>
