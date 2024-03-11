@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 GENERATOR</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        What is Generator?
+        its an effient and easy to use version of Iterator
+        */
+
+        //HOW TO ITERATOR
+        let names = ['Jam','Kam','Peru']
+        let iterator = names[Symbol.iterator]();
+        //PRINTS Jam {value: 'Jam', done: false}
+        console.log(iterator.next())
+
+        //GENERATOR SYNTAX
+        /*
+        function *generator(){
+
+        }
+        
+        */
+
+        //Example of generator()
+        console.log('------ Example of generator() ---------------')
+        function* generator2(){
+
+            yield 1;
+            yield 2;
+            yield 3;
+            yield 4;
+        }
+
+        let iteratorGen = generator2();
+        console.log(iteratorGen.next());
+
+        //HOW TO MAKE OBJECT ITERABLE
+        Object.prototype[Symbol.iterator] = function(){
+
+            return{
+                next(){
+
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

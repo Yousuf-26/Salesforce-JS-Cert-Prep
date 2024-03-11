@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>ES6 Iterator</title>
+</head>
+<body>
+    <script>
+        /*
+        What is Object.entries()?
+        converts an object into an array of keys and values so that it can be easily iterated
+        What is Iterator?
+        Iterator helps to iterate Objects like just arrays
+
+        How iterator decides if any datatype is iterable?
+        if any data type that has iterable as a property
+
+        */
+       console.log('-------- Object.entries() --------')
+    const object1 = {
+        a: 'somestring',
+        b: 42,
+        };
+
+    for (const [key, value] of Object.entries(object1)) {
+        console.log(`${key}: ${value}`);
+        }
+
+    // Expected output:
+    // "a: somestring"
+    // "b: 42"
+
+    let Sam = {
+        name:'Samuel',
+        age:33,
+        job:'OS Designer'
+    }
+    console.log('-----Sam Object converted to array using Object.entries()---------')
+    let SamObjToArr = Object.entries(Sam);
+
+    for(i=0; i< SamObjToArr.length;i++){
+        console.log(SamObjToArr[i][0]+':'+SamObjToArr[i][1])
+    }
+
+        console.log('ES6 Iterator')
+
+        /*
+        How to determine if its iterable?
+        * Must have a symbol.iterator function property
+        * The function must return an iterator
+        */
+        console.log('------------Object inspection to see if symbol.iterator-------------')
+        let jammy = {
+            name:'James Mick',
+            Occupation: 'Javascript developer'
+        }
+
+        console.dir('Object Jammy - ',jammy)
+
+        console.log('--------------array inspection to see if symbol.iterator-----------')
+        let sumOfThree = ['Jack','Jill','Jeff'];
+        console.log('sumOfThree array - ',sumOfThree)
+
+        //More complicated example - The function must return an iterator
+        let newArray = ['Cam','Sam','Jam']
+        let iterator = newArray[Symbol.iterator]();
+        console.dir(iterator.next())
+        console.dir(iterator.next())
+        console.dir(iterator.next())
+        console.dir(iterator.next())
+
+        //Iterator is very powerful compared to for of looping
+        // help to pause and continue the loop whenever we want, we dont need to wait the loop to finish but still manage to contiue ///and puase whenever we want
+
+        /*
+        Iterator protocol
+        rules that needs to complied
+        * must be a JS Object
+        * must have next() implementation
+        * next() must return an object with done: Boolean and a value
+        */
+
+
+    </script>
+</body>
+</html>
