@@ -41,15 +41,35 @@
         console.log(iteratorGen.next());
 
         //HOW TO MAKE OBJECT ITERABLE
+        let objectSample = {
+            value1:1,
+            value2:2,
+            value3:3,
+            value4:4
+        }
+
+        //HOW TO MAKE OBJECT ITERABLE
         Object.prototype[Symbol.iterator] = function(){
+            const entries =Object.entries(this);
+            let count = entries.length;
+            let index = 0;
+            return {
 
-            return{
                 next(){
-
+                    if(count >0){
+                        let result = {done:false, value: entries[index][1]};
+                        count--;
+                        index++;
+                        return result;
+                    }
+                    return {done:true}
                 }
             }
         }
 
+        for(let element of objectSample){
+            console.log(element)
+        }
 
     </script>
 </body>
