@@ -14,3 +14,4 @@ JS concepts for review
 12. static method
 13. Polymorphism
 14. explicit,implicit,new and window binding
+15. Lexical scoping
